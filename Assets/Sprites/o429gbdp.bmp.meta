@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 489ecb431a0b8d14db0b5fd8479a46ff
+guid: 015bd892778ffab46b0df948ecb5083d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lucy_Walk_Cycle_Sprite_Sheet_0
+      name: o429gbdp_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 3
-        width: 12
-        height: 20
+        x: 40
+        y: 16
+        width: 48
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4489bbb843de9e54cb8ec9b1f765d1c8
-      internalID: 483862451
+      spriteID: b0a3c48efef60434b8ee0329c776c226
+      internalID: 1625011731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lucy_Walk_Cycle_Sprite_Sheet_1
+      name: o429gbdp_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 3
-        width: 12
-        height: 19
+        x: 168
+        y: 16
+        width: 48
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11d1a6b39693b5d4eafb1af1b45f0b18
-      internalID: 1042353609
+      spriteID: 19e3a623f6e322148bde3f178d636f1a
+      internalID: 2033948626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lucy_Walk_Cycle_Sprite_Sheet_2
+      name: o429gbdp_2
       rect:
         serializedVersion: 2
-        x: 74
-        y: 3
-        width: 12
-        height: 20
+        x: 296
+        y: 16
+        width: 48
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3153f934c332e9b4b95711ddc5c43e33
-      internalID: 139590808
+      spriteID: 66a00037fa47375408cb384a6f926519
+      internalID: -456072353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lucy_Walk_Cycle_Sprite_Sheet_3
+      name: o429gbdp_3
       rect:
         serializedVersion: 2
-        x: 106
-        y: 3
-        width: 12
-        height: 19
+        x: 424
+        y: 16
+        width: 48
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbf43d2dcc3bf3c409f605281a908a20
-      internalID: 763096058
+      spriteID: d5df07d43ff6fae4c9e86df67eef6c93
+      internalID: -2060373087
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lucy_Walk_Cycle_Sprite_Sheet_0: 483862451
-      Lucy_Walk_Cycle_Sprite_Sheet_1: 1042353609
-      Lucy_Walk_Cycle_Sprite_Sheet_2: 139590808
-      Lucy_Walk_Cycle_Sprite_Sheet_3: 763096058
+      o429gbdp_0: 1625011731
+      o429gbdp_1: 2033948626
+      o429gbdp_2: -456072353
+      o429gbdp_3: -2060373087
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

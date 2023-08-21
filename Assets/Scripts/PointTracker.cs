@@ -6,17 +6,9 @@ using UnityEngine;
 public class PointTracker : MonoBehaviour
 {
     [SerializeField] private int totalPoints = 0;
-    [SerializeField] private int coinValue = 50;
     [SerializeField] private TMP_Text pointsOnUI;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Points")
-        {
-            AddPoints(coinValue);
-            Destroy(collision.gameObject);
-        }
-    }
+    
 
     public void AddPoints(int points) { totalPoints += points; UpdatePointsUI(); }
 

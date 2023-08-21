@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             _rigidBody.AddForce(_fallForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
-        // _rigidBody.velocity = new Vector2(_movementSpeed, _rigidBody.velocity.y);
+        _rigidBody.velocity = new Vector2(5, _rigidBody.velocity.y);
     }
 
     bool IsOnGround()

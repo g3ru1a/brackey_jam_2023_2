@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,24 +8,23 @@ public class PlayerMovement : MonoBehaviour
     public int trackBPM = 100;
     private float _movementSpeed;
 
-    public InputAction inputAction;
-
-    private float _jumpPower = 3.7f;
-    private float _fallMultiplier = 8f;
-    private Vector2 _fallForce;
-
-    private Rigidbody2D _rigidBody;
-    private Transform _groundCheck;
     [SerializeField]
     private LayerMask _groundLayer;
+    private Rigidbody2D _rigidBody;
+    private Transform _groundCheck;
+    
+    private float jumpHeight = 0.7f;
+    private float _jumpPower;
+    private float _fallMultiplier = 12f;
+    private Vector2 _fallForce;
 
     private float _coyoteTime = 0.2f;
     private float _coyoteTimeCounter = 0;
     private float _jumpBuffer = 0.2f;
     private float _jumpBufferCounter = 0;
+    private bool _isJumping = false;
 
     private bool _gameStarted = false;
-    private bool _isJumping = false;
 
     void Awake()
     {
@@ -35,23 +32,20 @@ public class PlayerMovement : MonoBehaviour
         _groundCheck = gameObject.transform.Find("GroundCheck").gameObject.transform;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameStarted = true;
-        inputAction.Enable();
-        // Calculate Jump power and movement based on bpm
-        _movementSpeed = Mathf.Sqrt(trackBPM)/2;
-        // _jumpPower = _movementSpeed;
 
+        _movementSpeed = Mathf.Sqrt(trackBPM)/2; //To be tweaked
+        _jumpPower = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * _rigidBody.gravityScale) * -2) * _rigidBody.mass;
         _fallForce = Vector2.up * (Physics2D.gravity.y * (_fallMultiplier - 1));
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // To be removed once tweaking is complete
         _fallForce = Vector2.up * (Physics2D.gravity.y * (_fallMultiplier - 1));
-
+        // .\
         if(Keyboard.current.spaceKey.wasPressedThisFrame ||
             Mouse.current.leftButton.wasPressedThisFrame)
         {
@@ -77,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
         if(_rigidBody.velocity.y < 0){
             _rigidBody.AddForce(_fallForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
-        _rigidBody.velocity = new Vector2(_movementSpeed, _rigidBody.velocity.y);
+
+        // _rigidBody.velocity = new Vector2(_movementSpeed, _rigidBody.velocity.y);
     }
 
     bool IsOnGround()
@@ -86,7 +81,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump(){
-        _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpPower);
+        _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, 0);
+        _rigidBody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
     }
 
     IEnumerator JumpCooldown()
@@ -101,9 +97,5 @@ public class PlayerMovement : MonoBehaviour
         if(_gameStarted){
             Gizmos.DrawWireSphere(_groundCheck.position, 0.1f);
         }
-    }
-
-    void OnDisable(){
-        inputAction.Disable();
     }
 }

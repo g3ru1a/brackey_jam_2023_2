@@ -5312,16 +5312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackBPM: 127
-  inputAction:
-    m_Name: Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d27c6348-9d59-4155-9747-5ac50617c922
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  _jumpPower: 3.7
+  jumpHeight: 0.7
   _fallMultiplier: 8
   _groundLayer:
     serializedVersion: 2
@@ -5417,9 +5408,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &2076792949
 CapsuleCollider2D:

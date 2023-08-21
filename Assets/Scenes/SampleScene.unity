@@ -5289,7 +5289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2076792947}
   - component: {fileID: 2076792946}
-  - component: {fileID: 2076792945}
+  - component: {fileID: 2076792951}
   - component: {fileID: 2076792948}
   - component: {fileID: 2076792949}
   - component: {fileID: 2076792950}
@@ -5300,24 +5300,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2076792945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076792942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c107899c84762bc4d837803b5dc08f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackBPM: 127
-  jumpHeight: 0.7
-  _fallMultiplier: 8
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!212 &2076792946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5402,7 +5384,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5470,6 +5452,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2076792951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076792942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df140ef0b0af3a0488988fcbec6eaa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  beatsPerMinute: 120
+  jumpForce: 15
+  groundCheck: {fileID: 1908321362}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  rb: {fileID: 2076792948}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

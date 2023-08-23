@@ -42,6 +42,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack(InputAction.CallbackContext context)
     {
         if(!_playerController.CanMove()) return;
+        _playerController.Attacked();
         Collider2D[] hitObjects = Physics2D.OverlapCircleAll(_attackPosition, radius, hittableLayer);
         foreach(Collider2D hitObject in hitObjects)
         {

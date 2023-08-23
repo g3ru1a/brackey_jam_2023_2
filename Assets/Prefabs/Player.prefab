@@ -50,8 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8936f3c9989c7764a8614b2e972128e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpAudioClip: {fileID: 0}
+  jumpAudioClip: {fileID: 8300000, guid: 4323708c872b5314a93b2910ab1985b7, type: 3}
   jumpClipVolume: 1
+  _jumpAudioDelay: 0.2
+  attackAudioClip: {fileID: 8300000, guid: bb6a754f7a970f34f99536c6d71658ec, type: 3}
+  attackClipVolume: 1
   _canMove: 0
 --- !u!114 &4732569623354838387
 MonoBehaviour:

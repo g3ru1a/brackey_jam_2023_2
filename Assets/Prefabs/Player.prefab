@@ -83,9 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af96ecd95d0a5ba44a23b02f7d4a590e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 0.646
+  offsetX: 0.845
   offsetY: 0.026
-  radius: 0.513
+  radius: 1
   hittableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8979842312780477537}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!70 &329228759392050162
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

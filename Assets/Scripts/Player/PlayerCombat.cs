@@ -42,16 +42,20 @@ public class PlayerCombat : MonoBehaviour
     void Attack(InputAction.CallbackContext context)
     {
         if(!_playerController.CanMove()) return;
+        _attackPosition = new Vector2(transform.position.x + offsetX, transform.position.y + offsetY);
         _playerController.Attacked();
-        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(_attackPosition, radius, hittableLayer);
-        foreach(Collider2D hitObject in hitObjects)
-        {
-            hitObject.gameObject.GetComponent<Hittable>().Hit(1);
+        Collider2D[] hitObjects = Physics2D.OverlapBoxAll(_attackPosition, Vector2.one*radius, 0, hittableLayer);
+        Debug.Log(hitObjects.Length);
+        if(hitObjects.Length > 0){
+            foreach(Collider2D hitObject in hitObjects)
+            {
+                hitObject.gameObject.GetComponent<Hittable>().Hit(1);
+            }
         }
     }
 
     void OnDrawGizmos(){
-        _attackPosition = new Vector2(transform.position.x + offsetX, transform.position.y + offsetY);
-        Gizmos.DrawWireSphere(_attackPosition, radius);
+        // _attackPosition = new Vector2(transform.position.x + offsetX, transform.position.y + offsetY);
+        // Gizmos.DrawWireCube(_attackPosition, Vector3.one * radius);
     }
 }

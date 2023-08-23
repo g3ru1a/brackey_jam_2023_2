@@ -126,25 +126,30 @@ public class PlayerMovement : MonoBehaviour
                 playedSound = true;
             }
 
-            float x = Mathf.Lerp(startingPos.x, endingPos.x, normal);
-            float y = (Mathf.Sin(Mathf.Lerp(0, Mathf.PI, normal)) * _jumpHeight)
-                + Mathf.Lerp(startingPos.y, adjustedEndingPos.y, normal);
-
-            y += (_capsuleCollider.bounds.size.y / 2);
-            // Debug.Log("Move To Y" + y + " | Current Y" + gameObject.transform.position.y);
-            Vector3 newPosition = new Vector3(x, y, gameObject.transform.position.z);
-            // MoveTo(newPosition);
-            transform.position = newPosition;
+            MoveTo(InterpolateNextJumpPosition(normal, startingPos, adjustedEndingPos));
             // Debug.Break();
             yield return new WaitForFixedUpdate();
-            // timeLeft -= Time.fixedDeltaTime;
-            timeLeft -= 0.01f;
+            timeLeft -= Time.fixedDeltaTime;
+            // timeLeft -= 0.01f;
         }
+
+        //Last Jump Frame where normal is exactly 1
+        MoveTo(InterpolateNextJumpPosition(1, startingPos, adjustedEndingPos));
+        yield return new WaitForFixedUpdate();
         _isJumping = false;
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
         //Move to ground and take a step
-        MoveOnGround();
-        MoveTo(gameObject.transform.position + _movementSpeed * Vector3.right * Time.fixedDeltaTime);
+        // MoveOnGround();
+        // MoveTo(gameObject.transform.position + _movementSpeed * Vector3.right * Time.fixedDeltaTime);
+    }
+
+    Vector2 InterpolateNextJumpPosition(float normal, Vector2 startPos, Vector2 endPos)
+    {
+        float x = Mathf.Lerp(startPos.x, endPos.x, normal);
+        float y = (Mathf.Sin(Mathf.Lerp(0, Mathf.PI, normal)) * _jumpHeight)
+            + Mathf.Lerp(startPos.y, endPos.y, normal);
+        y += _capsuleCollider.bounds.size.y / 2;
+        return new Vector3(x, y, gameObject.transform.position.z);
     }
 
     void MoveOnGround(bool force = false)
@@ -166,53 +171,54 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        _capsuleCollider = gameObject.GetComponent<CapsuleCollider2D>();
-        _gameManager = FindObjectOfType<GameManager>();
+        // _capsuleCollider = gameObject.GetComponent<CapsuleCollider2D>();
+        // _gameManager = FindObjectOfType<GameManager>();
 
-        Vector2 groundCheckPosition = new Vector2(gameObject.transform.position.x, _capsuleCollider.bounds.min.y);
-        Gizmos.DrawWireSphere(groundCheckPosition, 0.1f);
+        // Vector2 groundCheckPosition = new Vector2(gameObject.transform.position.x, _capsuleCollider.bounds.min.y);
+        // Gizmos.DrawWireSphere(groundCheckPosition, 0.1f);
 
-        float botY = _capsuleCollider.bounds.min.y;
-        Vector2 pos1 = new Vector2(gameObject.transform.position.x - _capsuleCollider.bounds.size.x / 2, botY);
-        Vector2 pos2 = new Vector2(gameObject.transform.position.x + _capsuleCollider.bounds.size.x / 2, botY);
-        Gizmos.DrawLine(pos1, pos2);
+        // float botY = _capsuleCollider.bounds.min.y;
+        // Vector2 pos1 = new Vector2(gameObject.transform.position.x - _capsuleCollider.bounds.size.x / 2, botY);
+        // Vector2 pos2 = new Vector2(gameObject.transform.position.x + _capsuleCollider.bounds.size.x / 2, botY);
+        // Gizmos.DrawLine(pos1, pos2);
 
-        float BPS =  _gameManager.trackBPM / 60f;
-        _movementSpeed = (BPS * 4) -  _gameManager.trackOffset;
-        _jumpDuration = 60f /  _gameManager.trackBPM;
+        // float BPS =  _gameManager.trackBPM / 60f;
+        // _movementSpeed = (BPS * 4) -  _gameManager.trackOffset;
+        // _jumpDuration = 60f /  _gameManager.trackBPM;
 
 
-        // startingPos = new Vector2(gameObject.transform.position.x,
-        //     gameObject.transform.position.y - _capsuleCollider.bounds.size.y / 2);
-        // endingPos = startingPos +(Vector2.right * (_movementSpeed * _jumpDuration));
+        // // startingPos = new Vector2(gameObject.transform.position.x,
+        // //     gameObject.transform.position.y - _capsuleCollider.bounds.size.y / 2);
+        // // endingPos = startingPos +(Vector2.right * (_movementSpeed * _jumpDuration));
 
-        //Flat sin arch
-        Gizmos.color = Color.red;
-        PlotSinCurveGizmo(startingPos, endingPos, _jumpDuration, Time.fixedDeltaTime);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(startingPos, endingPos);
+        // //Flat sin arch
+        // Gizmos.color = Color.red;
+        // PlotSinCurveGizmo(startingPos, endingPos, _jumpDuration, Time.fixedDeltaTime);
+        // Gizmos.color = Color.blue;
+        // Gizmos.DrawLine(startingPos, endingPos);
 
-        //Adjusted for ground collision prediction
-        Vector2 raycastOrigin = endingPos + Vector2.up * _jumpHeight;
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, Vector2.down, Mathf.Infinity, _groundLayer);
-        Gizmos.DrawLine(raycastOrigin, raycastOrigin + Vector2.down * hit.distance);
+        // //Adjusted for ground collision prediction
+        // Vector2 raycastOrigin = endingPos + Vector2.up * _jumpHeight;
+        // RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, Vector2.down, Mathf.Infinity, _groundLayer);
+        // Gizmos.DrawLine(raycastOrigin, raycastOrigin + Vector2.down * hit.distance);
 
-        float minYLand = (startingPos.y + _jumpHeight) - hit.distance;
-        Vector2 adjustedEndingPos = new Vector2(endingPos.x, minYLand);
+        // float minYLand = (startingPos.y + _jumpHeight) - hit.distance;
+        // Vector2 adjustedEndingPos = new Vector2(endingPos.x, minYLand);
 
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(startingPos, new Vector2(endingPos.x, minYLand));
+        // Gizmos.color = Color.cyan;
+        // Gizmos.DrawLine(startingPos, new Vector2(endingPos.x, minYLand));
 
-        Gizmos.color = Color.green;
-        PlotSinCurveGizmo(startingPos, adjustedEndingPos, _jumpDuration,
-            Time.fixedDeltaTime, 0, _capsuleCollider.bounds.size.y / 2);
+        // Gizmos.color = Color.green;
+        // PlotSinCurveGizmo(startingPos, adjustedEndingPos, _jumpDuration,
+        //     Time.fixedDeltaTime, 0, _capsuleCollider.bounds.size.y / 2);
 
-        Gizmos.DrawWireSphere(_capsuleCollider.transform.position,.5f);
+        // Gizmos.DrawWireSphere(_capsuleCollider.transform.position,.5f);
     }
 
     void PlotSinCurveGizmo(Vector2 startingPos, Vector2 endingPos, float curveLength, float step, float xOffset = 0, float yOffset = 0)
     {
         Vector2 prev_pos = Vector2.zero;
+        Vector2 new_pos = Vector2.zero;
         float remaining = _jumpDuration;
         while (remaining >= 0f)
         {
@@ -224,12 +230,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Vector2 new_pos = GetNewPos(startingPos, endingPos, normal, xOffset, yOffset);
+                new_pos = GetNewPos(startingPos, endingPos, normal, xOffset, yOffset);
                 Gizmos.DrawLine(prev_pos, new_pos);
                 prev_pos = new_pos;
             }
             remaining -= step;
         }
+        new_pos = GetNewPos(startingPos, endingPos, 1, xOffset, yOffset);
+        Gizmos.DrawLine(prev_pos, new_pos);
+        prev_pos = new_pos;
     }
 
     Vector2 GetNewPos(Vector2 startingPos, Vector2 endingPos, float normal, float xOffset = 0, float yOffset = 0)

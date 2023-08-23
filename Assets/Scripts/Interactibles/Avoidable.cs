@@ -10,16 +10,27 @@ public class Avoidable : MonoBehaviour
 
     private GameManager _gameManager;
 
+    private Vector2 _collided = Vector2.zero;
+
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.tag == "Player"){
+        if(collider.gameObject.tag == "Player"){
+            _collided = collider.gameObject.transform.position;
             _gameManager.GetAudioSource().PlayOneShot(collidedAudioClip, audioClipVolume);
-            collision.gameObject.GetComponent<PlayerController>().DisableMovement();
+            collider.gameObject.GetComponent<PlayerController>().DisableMovement();
         }
     }
+
+    void OnDrawGizmos(){
+        if(_collided != Vector2.zero){
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_collided, 0.5f);
+        }
+    }
+
 }

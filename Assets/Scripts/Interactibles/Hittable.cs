@@ -12,10 +12,12 @@ public class Hittable : MonoBehaviour
     public int hitsToDestroy = 1;
 
     private GameManager _gameManager;
+    private ParticleSystem _particleSystem;
 
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
+        _particleSystem = GetComponent<ParticleSystem>();
     }
 
     public void Hit(int damage)
@@ -30,6 +32,16 @@ public class Hittable : MonoBehaviour
     void ObjectDestroyed()
     {
         Debug.Log("Destroyed");
+        if(_particleSystem != null){
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            _particleSystem.Play();
+        }else{
+            Destroy(gameObject);
+        }
+    }
+
+    void OnParticleSystemStopped(){
         Destroy(gameObject);
     }
 

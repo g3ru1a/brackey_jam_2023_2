@@ -56,7 +56,7 @@ MonoBehaviour:
   attackAudioClip: {fileID: 8300000, guid: bb6a754f7a970f34f99536c6d71658ec, type: 3}
   attackClipVolume: 1
   deadAudioClip: {fileID: 8300000, guid: e1945ffc55b2a6d4a9773efb8228cb73, type: 3}
-  deadClipVolume: 1
+  deadClipVolume: 0.365
   _canMove: 0
 --- !u!114 &4732569623354838387
 MonoBehaviour:
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af96ecd95d0a5ba44a23b02f7d4a590e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 0.845
+  offsetX: 0.713
   offsetY: 0.026
   radius: 1
   hittableLayer:
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 285775006, guid: 1190106fee6f91e4991e2ab06bf6c4fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

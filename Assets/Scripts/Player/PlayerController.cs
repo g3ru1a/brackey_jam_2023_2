@@ -110,6 +110,10 @@ public class PlayerController : MonoBehaviour
         y = Mathf.Lerp(playerInitialPosition.y, playerFinalPosition.y, 1);
         _rigidBody.position = new Vector2(x, y);
 
+        GameObject[] hittables = GameObject.FindGameObjectsWithTag("Hittable");
+        foreach(GameObject obj in hittables){
+            obj.GetComponent<Hittable>().EnableObject();
+        }
         yield return new WaitForSeconds(2);
         _collider.enabled = true;
         _gameManager.GetTrackSource().time = checkPoint.GetAudioTimeStamp();

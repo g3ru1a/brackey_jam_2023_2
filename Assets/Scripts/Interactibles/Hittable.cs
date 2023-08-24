@@ -60,6 +60,9 @@ public class Hittable : MonoBehaviour
         gameObject.SetActive(true);
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
+        if(_animator){
+            _animator.SetTrigger("BackToDefault");
+        }
     }
 
     void OnParticleSystemStopped(){

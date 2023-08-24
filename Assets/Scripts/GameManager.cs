@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text pointsOnUI;
 
     public int totalPoints = 0;
+
+    public GameObject pointLoosePS;
 
     
     private PlayerInputActions _inputActions;
@@ -93,6 +96,29 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddPoints(int points) { totalPoints += points; UpdatePointsUI(); }
+    public void LoosePoints(bool allPoints = false) { 
+        if(allPoints){
+            if(totalPoints > 0 ){
+                GameObject coinPS = Instantiate(pointLoosePS, _playerController.gameObject.transform.position, Quaternion.identity);
+                ParticleSystem ps = coinPS.GetComponent<ParticleSystem>();
+                var main = ps.main;
+                main.maxParticles = totalPoints;
+                ps.Play();
+            }
+            totalPoints = 0;
+        }else if (totalPoints > 0){
+            int pointLoss = UnityEngine.Random.Range(1, totalPoints / 2);
+            if(totalPoints > 0){
+                GameObject coinPS = Instantiate(pointLoosePS, _playerController.gameObject.transform.position, Quaternion.identity);
+                ParticleSystem ps = coinPS.GetComponent<ParticleSystem>();
+                var main = ps.main;
+                main.maxParticles = pointLoss;
+                ps.Play();
+            }
+            totalPoints -= pointLoss;
+        }
+        UpdatePointsUI(); 
+    }
 
     public void UpdatePointsUI() { pointsOnUI.text = totalPoints.ToString(); }
 

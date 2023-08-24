@@ -115,7 +115,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -144,5 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudioClip: {fileID: 8300000, guid: a86a0a5ab93ee0e4dbf263f6b761df97, type: 3}
+  hitClipVolume: 1
   collidedAudioClip: {fileID: 8300000, guid: de08670b531219846aa9c802dcd3190d, type: 3}
+  collidedClipVolume: 1
   hitsToDestroy: 1

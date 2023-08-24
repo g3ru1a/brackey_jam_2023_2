@@ -55,6 +55,8 @@ MonoBehaviour:
   _jumpAudioDelay: 0
   attackAudioClip: {fileID: 8300000, guid: bb6a754f7a970f34f99536c6d71658ec, type: 3}
   attackClipVolume: 1
+  deadAudioClip: {fileID: 8300000, guid: e1945ffc55b2a6d4a9773efb8228cb73, type: 3}
+  deadClipVolume: 1
   _canMove: 0
 --- !u!114 &4732569623354838387
 MonoBehaviour:
@@ -135,7 +137,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 3}
+  m_Size: {x: 0.375, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

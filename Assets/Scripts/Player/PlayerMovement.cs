@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float _jumpBuffer = 0.2f;
     private float _jumpBufferCounter = 0;
-    private bool _isJumping = false;
 
     Vector2 startingPos = Vector2.zero;
     Vector2 endingPos = Vector2.zero;
@@ -61,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             _jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (IsOnGround() && _jumpBufferCounter > 0f && !_isJumping && _playerController.CanMove())
+        if (IsOnGround() && _jumpBufferCounter > 0f && !_playerController.IsJumping() && _playerController.CanMove())
         {
             StartCoroutine(JumpCoroutine());
         }
@@ -80,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             _rigidBody.AddForce(_fallForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
-        if (!_isJumping)
+        if (!_playerController.IsJumping())
         {
             MoveTo(gameObject.transform.position + _movementSpeed * Vector3.right * Time.fixedDeltaTime);
         }
@@ -104,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator JumpCoroutine()
     {
         _rigidBody.bodyType = RigidbodyType2D.Kinematic;
-        _isJumping = true;
+        _playerController.SetJumping(true);
         bool playedSound = false;
         startingPos = new Vector2(gameObject.transform.position.x, _capsuleCollider.bounds.min.y);
         // endingPos = startingPos + (Vector2.right * (_movementSpeed * _jumpDuration)) - new Vector2(0.2f, 0);
@@ -136,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         //Last Jump Frame where normal is exactly 1
         MoveTo(InterpolateNextJumpPosition(1, startingPos, adjustedEndingPos));
         yield return new WaitForFixedUpdate();
-        _isJumping = false;
+        _playerController.SetJumping(false);
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
         //Move to ground and take a step
         // MoveOnGround();

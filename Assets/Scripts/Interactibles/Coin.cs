@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            _gameManager.GetAudioSource().PlayOneShot(pickupAudioClip);
+            _gameManager.GetSFXSource().PlayOneShot(pickupAudioClip);
             _gameManager.AddPoints(coinValue);
             Destroy(this.gameObject);
         }

@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 50
-  pickupAudioClip: {fileID: 8300000, guid: 63b0dd60d8c68e748aaa148493081680, type: 3}
+  pickupAudioClip: {fileID: 8300000, guid: cba9085f995a42c4da9a942fea6cfb4f, type: 3}
 --- !u!95 &404059850888756979
 Animator:
   serializedVersion: 5

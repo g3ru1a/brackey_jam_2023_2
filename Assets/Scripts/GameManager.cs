@@ -8,15 +8,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioClip track;
+    public AudioSource trackSource;
     public float trackBPM = 128;
     [Range(0, 1)]
     public float trackOffset = 0;
+
+    public AudioSource sfxSource;
     
     public TMP_Text pointsOnUI;
 
     public int totalPoints = 0;
 
-    private AudioSource _audioSource;
     
     private PlayerInputActions _inputActions;
     private InputAction _startAction;
@@ -25,13 +28,13 @@ public class GameManager : MonoBehaviour
 
     private PlayerController _playerController;
 
+
     void Awake()
     {
         _inputActions = new PlayerInputActions();
         GameManager[] gms = FindObjectsOfType<GameManager>();
         if(gms.Length > 1) Debug.LogError("Too Many Game Managers!");
 
-        _audioSource = gameObject.GetComponent<AudioSource>();
         _playerController = FindObjectOfType<PlayerController>();
     }
 
@@ -82,6 +85,13 @@ public class GameManager : MonoBehaviour
         //
     }
 
+    void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Player"){
+            trackSource.clip = track;
+            trackSource.Play();
+        }
+    }
+
     public void AddPoints(int points) { totalPoints += points; UpdatePointsUI(); }
 
     public void UpdatePointsUI() { pointsOnUI.text = totalPoints.ToString(); }
@@ -90,5 +100,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetPoints() { totalPoints = 0; UpdatePointsUI(); }
 
-    public AudioSource GetAudioSource() { return _audioSource; }
+    public AudioSource GetSFXSource() { return sfxSource; }
+    public AudioSource GetTrackSource() { return trackSource; }
 }

@@ -154,9 +154,8 @@ public class PlayerMovement : MonoBehaviour
     void MoveOnGround(bool force = false)
     {
         Debug.Log("Move to ground");
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, _capsuleCollider.bounds.min.y),
-            Vector2.down, Mathf.Infinity, _groundLayer);
-        float groundY = _capsuleCollider.bounds.min.y - hit.distance + (_capsuleCollider.bounds.size.y / 2);
+        float groundY = GetGroundAt(new Vector2(transform.position.x, _capsuleCollider.bounds.min.y),
+            _capsuleCollider.bounds.size.y / 2).y;
         MoveTo(new Vector3(transform.position.x, groundY, transform.position.z), force);
     }
 
@@ -166,6 +165,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidBody.position = position;
         }
+    }
+
+    public Vector2 GetGroundAt(Vector2 position, float offset = 0)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, Mathf.Infinity, _groundLayer);
+        float groundY = position.y - hit.distance + offset;
+        return new Vector2(position.x, groundY);
     }
 
     void OnDrawGizmos()

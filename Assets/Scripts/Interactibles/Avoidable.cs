@@ -13,7 +13,7 @@ public class Avoidable : MonoBehaviour
             
             PlayerController pc = collider.gameObject.GetComponent<PlayerController>();
             pc.DisableMovement();
-            pc.PlayerDead();
+            pc.PlayerFailed();
         }
     }
 

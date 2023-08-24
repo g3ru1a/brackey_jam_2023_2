@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,16 +13,25 @@ public class PlayerController : MonoBehaviour
     public AudioClip attackAudioClip;
     [Range(0,1)]
     public float attackClipVolume = 1f;
+    public AudioClip failAudioClip;
+    [Range(0,1)]
+    public float failClipVolume = 1f;
     public AudioClip deadAudioClip;
     [Range(0,1)]
     public float deadClipVolume = 1f;
 
     [SerializeField] private bool _canMove;
 
+    public float backToCheckpointTransitionDurationSeconds = 2f;
+
+    private int _playerHP = 1;
+
     private PlayerMovement _playerMovement;
     private PlayerCombat _playerCombat;
     private GameManager _gameManager;
     private Animator _animator;
+    private CapsuleCollider2D _collider;
+    private Rigidbody2D _rigidBody;
 
     private CheckPoint _lastCheckPoint = null;
 
@@ -33,6 +43,8 @@ public class PlayerController : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _gameManager = FindObjectOfType<GameManager>();
         _animator = gameObject.GetComponent<Animator>();
+        _collider = gameObject.GetComponent<CapsuleCollider2D>();
+        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     public void Jumped()
@@ -46,10 +58,61 @@ public class PlayerController : MonoBehaviour
         _animator.SetTrigger("Attack");
     }
 
-    public void PlayerDead()
-    {
+    public void PlayerDeath(){
         _gameManager.GetSFXSource().PlayOneShot(deadAudioClip, deadClipVolume);
         _gameManager.GetTrackSource().Stop();
+    }
+
+    public void PlayerFailed()
+    {
+        _playerHP--;
+        if(_playerHP <= 0){
+            PlayerDeath();
+            return;
+        }
+
+        if(_lastCheckPoint != null)
+        {
+            
+            _gameManager.GetSFXSource().PlayOneShot(failAudioClip, failClipVolume);
+            StartCoroutine(BackToCheckpoint(_lastCheckPoint));
+        }
+    }
+
+    IEnumerator BackToCheckpoint(CheckPoint checkPoint)
+    {
+        float colliderHeight = _collider.bounds.size.y;
+        _collider.enabled = false;
+        DisableMovement();
+        _gameManager.GetTrackSource().Pause();
+        Vector2 playerInitialPosition = gameObject.transform.position;
+        Debug.Log(colliderHeight);
+        Vector2 playerFinalPosition = _playerMovement.GetGroundAt(checkPoint.GetPosition() + Vector2.up * colliderHeight, colliderHeight/2);
+        Debug.Log(playerFinalPosition);
+        float timeLeft = backToCheckpointTransitionDurationSeconds;
+        while(timeLeft >= 0)
+        {
+            float normal = 1 - Mathf.InverseLerp(0, backToCheckpointTransitionDurationSeconds, timeLeft);
+
+            float x = Mathf.Lerp(playerInitialPosition.x, playerFinalPosition.x, normal);
+            float y = Mathf.Lerp(playerInitialPosition.y, playerFinalPosition.y, normal);
+
+            _rigidBody.position = new Vector2(x, y);
+
+            yield return new WaitForFixedUpdate();
+            timeLeft -= Time.fixedDeltaTime;
+        }
+        
+        _collider.enabled = true;
+        _gameManager.GetTrackSource().time = checkPoint.GetAudioTimeStamp();
+        _gameManager.GetTrackSource().Play();
+        EnableMovement();
+    }
+
+    public void ReachedCheckpoint(CheckPoint checkPoint){
+        _playerHP += checkPoint.HPBuff;
+        _lastCheckPoint = checkPoint;
+
     }
 
     public void SetJumping(bool value)
@@ -74,7 +137,17 @@ public class PlayerController : MonoBehaviour
 
     public float GetJumpAudioDelay() {return _jumpAudioDelay;}
 
-    public void SetCheckpoint(CheckPoint checkPoint){
-        _lastCheckPoint = checkPoint;
+    void OnDrawGizmos(){
+        if(_lastCheckPoint && _collider){
+            // Debug.Log(_playerMovement.GetGroundAt(_lastCheckPoint.GetPosition() + Vector2.up * _collider.bounds.size.y));
+            // Vector2 pos = _lastCheckPoint.GetPosition() + Vector2.up * _collider.bounds.size.y;
+            // Debug.Log("Checkpoint Pos: " + _lastCheckPoint.GetPosition());
+            // Debug.Log("Adjusted Pos: " + pos);
+            // Debug.Log("Ground Detected Pos: " + _playerMovement.GetGroundAt(pos));
+
+            // Gizmos.DrawLine(pos, _playerMovement.GetGroundAt(pos));
+            // Gizmos.DrawWireSphere(_playerMovement.GetGroundAt(pos), 1f);
+        }
     }
+
 }

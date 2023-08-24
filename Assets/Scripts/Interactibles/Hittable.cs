@@ -13,11 +13,13 @@ public class Hittable : MonoBehaviour
 
     private GameManager _gameManager;
     private ParticleSystem _particleSystem;
+    private Animator _animator;
 
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
         _particleSystem = GetComponent<ParticleSystem>();
+        _animator = GetComponent<Animator>();
     }
 
     public void Hit(int damage)
@@ -32,17 +34,36 @@ public class Hittable : MonoBehaviour
     void ObjectDestroyed()
     {
         Debug.Log("Destroyed");
-        if(_particleSystem != null){
-            GetComponent<SpriteRenderer>().enabled = false;
+        if(_particleSystem != null && _animator != null){
+            _animator.SetTrigger("Break");
             GetComponent<BoxCollider2D>().enabled = false;
             _particleSystem.Play();
         }else{
-            Destroy(gameObject);
+            DisableObject();
         }
     }
 
+    public void DisableSpriteRenderer(float delay)
+    {
+        StartCoroutine(DisableSpriteRendererCoroutine(delay));
+    }
+
+    IEnumerator DisableSpriteRendererCoroutine(float delay){
+        yield return new WaitForSeconds(delay);
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void DisableObject(){
+        gameObject.SetActive(false);
+    }
+    public void EnableObject(){
+        gameObject.SetActive(true);
+        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     void OnParticleSystemStopped(){
-        Destroy(gameObject);
+        DisableObject();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +71,7 @@ public class Hittable : MonoBehaviour
         if(collision.gameObject.tag == "Player"){
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
             pc.DisableMovement();
-            pc.PlayerDead();
+            pc.PlayerFailed();
         }
     }
 }

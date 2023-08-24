@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28c6fd87c2bd39e4e9e56800571b3783
+guid: d5ae6a8a17e88bb4198dcce536ea772e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint_Flag (1)_0
+      name: boulder-break_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 8
-        width: 11
-        height: 16
+        x: 8
+        y: 7
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25851fc19449d01469107652cb64a27a
-      internalID: -2067922463
+      spriteID: a2bc41842ba0c804fb8201ac6fbc10dc
+      internalID: 1085930581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boulder-break_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 7
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.32, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715b7ee71ceaf3b409fe7021f9705b91
+      internalID: 1842011093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boulder-break_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 7
+        width: 48
+        height: 48
+      alignment: 9
+      pivot: {x: 0.02, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ec1d60de589334ab71a6f883e9b1fd
+      internalID: 431572463
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Checkpoint_Flag (1)_0: -2067922463
+      boulder-break_0: 1085930581
+      boulder-break_1: 1842011093
+      boulder-break_2: 431572463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -55,9 +55,12 @@ MonoBehaviour:
   _jumpAudioDelay: 0
   attackAudioClip: {fileID: 8300000, guid: bb6a754f7a970f34f99536c6d71658ec, type: 3}
   attackClipVolume: 1
+  failAudioClip: {fileID: 8300000, guid: 6387e43308f125d4281b889d53bbe160, type: 3}
+  failClipVolume: 0.547
   deadAudioClip: {fileID: 8300000, guid: e1945ffc55b2a6d4a9773efb8228cb73, type: 3}
   deadClipVolume: 0.365
   _canMove: 0
+  backToCheckpointTransitionDurationSeconds: 2
 --- !u!114 &4732569623354838387
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af96ecd95d0a5ba44a23b02f7d4a590e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 0.713
+  offsetX: 0.878
   offsetY: 0.026
   radius: 1
   hittableLayer:

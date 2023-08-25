@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -149,6 +147,9 @@ public class PlayerController : MonoBehaviour
     public bool CanMove() { return _canMove;}
 
     public float GetJumpAudioDelay() {return _jumpAudioDelay;}
+
+    public int GetHP() { return _playerHP; }
+    public int GetMaxHP() { return _maxPlayerHP; }
 
     void OnDrawGizmos(){
         if(_lastCheckPoint && _collider){

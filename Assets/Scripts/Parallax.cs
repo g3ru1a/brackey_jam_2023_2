@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Parallax : MonoBehaviour
 {
-    public GameObject camera;
+    public new GameObject camera;
 
     public float parallaxEffect;
 

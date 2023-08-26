@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     
     private PlayerInputActions _inputActions;
     private InputAction _startAction;
-    private InputAction _restartAction;
-    private InputAction _quitAction;
+    private InputAction _menuAction;
 
     private PlayerController _playerController;
 
@@ -46,18 +45,15 @@ public class GameManager : MonoBehaviour
         _startAction = _inputActions.Player.Start;
         _startAction.performed += StartGame;
         _startAction.Enable();
-        _restartAction = _inputActions.Player.Restart;
-        _restartAction.performed += RestartGame;
-        _restartAction.Enable();
-        _quitAction = _inputActions.Player.Quit;
-        _quitAction.performed += QuitGame;
-        _quitAction.Enable();
+        _menuAction = _inputActions.Player.Menu;
+        _menuAction.performed += MenuAction;
+        _menuAction.Enable();
     }
 
     void OnDisable()
     {
         _startAction.Disable();
-        _restartAction.Disable();
+        _menuAction.Disable();
     }
 
     void StartGame(InputAction.CallbackContext context)
@@ -66,12 +62,17 @@ public class GameManager : MonoBehaviour
         _startAction.Disable();
     }
 
-    void RestartGame(InputAction.CallbackContext context)
+    void MenuAction(InputAction.CallbackContext context)
+    {
+        //Toggle Pause Menu
+    }
+
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void QuitGame(InputAction.CallbackContext context)
+    public void QuitGame()
     {
         Application.Quit();
     }

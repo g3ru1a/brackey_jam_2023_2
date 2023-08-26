@@ -55,18 +55,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Restart"",
+                    ""name"": ""Menu"",
                     ""type"": ""Button"",
                     ""id"": ""4fb0e628-3aed-43b0-8ae3-8a2cb6285ce7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Quit"",
-                    ""type"": ""Button"",
-                    ""id"": ""4374747d-e57b-4a64-ac88-8dbb70881760"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -198,44 +189,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6a117dfb-3268-4087-8d27-f66f24cf2c71"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Restart"",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""b5992852-32c5-47db-b8fe-620b19e799c4"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Restart"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""63eab3fc-b877-40aa-bc34-a1d4392bb36c"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Quit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b003be39-f474-4cfe-b1bd-fed7c7ad676e"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Quit"",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -826,8 +795,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
-        m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
-        m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -904,8 +872,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Start;
-    private readonly InputAction m_Player_Restart;
-    private readonly InputAction m_Player_Quit;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -913,8 +880,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Start => m_Wrapper.m_Player_Start;
-        public InputAction @Restart => m_Wrapper.m_Player_Restart;
-        public InputAction @Quit => m_Wrapper.m_Player_Quit;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -933,12 +899,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Start.started += instance.OnStart;
             @Start.performed += instance.OnStart;
             @Start.canceled += instance.OnStart;
-            @Restart.started += instance.OnRestart;
-            @Restart.performed += instance.OnRestart;
-            @Restart.canceled += instance.OnRestart;
-            @Quit.started += instance.OnQuit;
-            @Quit.performed += instance.OnQuit;
-            @Quit.canceled += instance.OnQuit;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -952,12 +915,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Start.started -= instance.OnStart;
             @Start.performed -= instance.OnStart;
             @Start.canceled -= instance.OnStart;
-            @Restart.started -= instance.OnRestart;
-            @Restart.performed -= instance.OnRestart;
-            @Restart.canceled -= instance.OnRestart;
-            @Quit.started -= instance.OnQuit;
-            @Quit.performed -= instance.OnQuit;
-            @Quit.canceled -= instance.OnQuit;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1143,8 +1103,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
-        void OnRestart(InputAction.CallbackContext context);
-        void OnQuit(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

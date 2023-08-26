@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a28d41b13f2fb54c8c960fc288fe50c
+guid: 8500f8d065750c7468bf9a1431bd6b63
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Exit_Button_0
+      name: credits_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 45
-        width: 63
-        height: 27
+        x: 10
+        y: 58
+        width: 78
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfbeb67489938e24b9b763c784e78529
-      internalID: -2044386410
+      spriteID: 766850f37ee7bd249a9e330e3e34052b
+      internalID: 1643462690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credits_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 40
+        width: 78
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482184c0877ae5e4984fbff93c64fd24
+      internalID: -1877535342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credits_2
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 21
+        width: 78
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92aed99440057fd44a68eaa47e4f4643
+      internalID: -654119358
       vertices: []
       indices: 
       edges: []
@@ -141,7 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Exit_Button_0: -2044386410
+      credits_0: 1643462690
+      credits_1: -1877535342
+      credits_2: -654119358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

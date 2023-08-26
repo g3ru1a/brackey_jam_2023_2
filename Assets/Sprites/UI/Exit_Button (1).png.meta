@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 385e5c495003d4e44b4def4134549786
+guid: 140d391fc9f3f0e4d8663048da60258b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Play_Button_0
+      name: Exit_Button (1)_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 57
-        width: 66
+        x: 63
+        y: 69
+        width: 63
         height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26883d63d57931840be3a0398c2092bc
-      internalID: 769448583
+      spriteID: af61c7d05cc701f4191e147a37aca3bd
+      internalID: -741035487
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Play_Button_0: 769448583
+      Exit_Button (1)_0: -741035487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

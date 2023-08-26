@@ -33,18 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Restart",
+                    "name": "Menu",
                     "type": "Button",
                     "id": "4fb0e628-3aed-43b0-8ae3-8a2cb6285ce7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Quit",
-                    "type": "Button",
-                    "id": "4374747d-e57b-4a64-ac88-8dbb70881760",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -176,44 +167,22 @@
                 {
                     "name": "",
                     "id": "6a117dfb-3268-4087-8d27-f66f24cf2c71",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Restart",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "b5992852-32c5-47db-b8fe-620b19e799c4",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Restart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "63eab3fc-b877-40aa-bc34-a1d4392bb36c",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Quit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b003be39-f474-4cfe-b1bd-fed7c7ad676e",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Quit",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

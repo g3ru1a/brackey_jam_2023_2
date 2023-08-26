@@ -9,23 +9,16 @@ public class LevelLoader : MonoBehaviour
     public float transitionDuration = 1f;
 
 
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0)){
-            LoadNextLevel();
-        }
+    public void LoadLevel(string name){
+        StartCoroutine(LoadLevelAsync(name));
     }
 
-    void LoadNextLevel(){
-        StartCoroutine(LoadLevel(1));
-    }
-
-    IEnumerator LoadLevel(int buildIndex)
+    IEnumerator LoadLevelAsync(string name)
     {
         animator.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionDuration);
 
-        SceneManager.LoadScene(buildIndex);
+        SceneManager.LoadScene(name);
     }
 }

@@ -4,8 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Range(10,50)]
+    public float maxFallVelocity = 20f;
+
     [SerializeField]
     private LayerMask _groundLayer;
+
     private Rigidbody2D _rigidBody;
     private CapsuleCollider2D _capsuleCollider;
     private PlayerController _playerController;
@@ -77,12 +81,15 @@ public class PlayerMovement : MonoBehaviour
         if (_rigidBody.velocity.y < 0)
         {
             _rigidBody.AddForce(_fallForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, Mathf.Max(_rigidBody.velocity.y, -maxFallVelocity));
         }
 
         if (!_playerController.IsJumping())
         {
             MoveTo(gameObject.transform.position + _movementSpeed * Vector3.right * Time.fixedDeltaTime);
         }
+
+
     }
 
     void OnDisable()

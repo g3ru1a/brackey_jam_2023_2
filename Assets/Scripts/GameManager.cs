@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public AudioSource sfxSource;
     
     public TMP_Text pointsOnUI;
+    public TMP_Text pointsOnLevelFinishedUI;
 
     public int totalPoints = 0;
 
@@ -141,7 +142,10 @@ public class GameManager : MonoBehaviour
         UpdatePointsUI(); 
     }
 
-    public void UpdatePointsUI() { pointsOnUI.text = totalPoints.ToString(); }
+    public void UpdatePointsUI() { 
+        pointsOnUI.text = totalPoints.ToString();
+        pointsOnLevelFinishedUI.text = totalPoints.ToString();
+    }
 
     public int GetTotalPoints() { return totalPoints; }
 

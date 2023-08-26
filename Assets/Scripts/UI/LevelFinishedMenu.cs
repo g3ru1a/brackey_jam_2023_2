@@ -22,10 +22,10 @@ public class LevelFinishedMenu : MonoBehaviour
         background.interactable = false;
         score.alpha = 0;
 
-        nextLevelButton.transform.LeanSetPosX(400);
-        restartButton.transform.LeanSetPosX(400);
-        menuButton.transform.LeanSetPosX(400);
-        exitButton.transform.LeanSetPosX(400); 
+        nextLevelButton.transform.localScale = Vector2.zero; 
+        restartButton.transform.localScale = Vector2.zero;
+        menuButton.transform.localScale = Vector2.zero;
+        exitButton.transform.localScale = Vector2.zero; 
     }
 
 
@@ -35,13 +35,13 @@ public class LevelFinishedMenu : MonoBehaviour
         levelFinishMenu.SetActive(true);
         background.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
         score.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
-        logoImage.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.5f).setIgnoreTimeScale(true);
+        logoImage.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setIgnoreTimeScale(true);
 
 
-        nextLevelButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
-        restartButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
-        menuButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
-        exitButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
+        restartButton.transform.LeanScale(Vector2.one * 2f, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
+        nextLevelButton.transform.LeanScale(Vector2.one * 2f, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
+        menuButton.transform.LeanScale(Vector2.one * 2f, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
+        exitButton.transform.LeanScale(Vector2.one * 2f, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
         
     }
 }

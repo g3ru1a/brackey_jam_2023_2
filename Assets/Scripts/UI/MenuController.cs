@@ -21,6 +21,7 @@ public class MenuController : MonoBehaviour
     public GameObject backButton2;
 
     void Awake(){
+        Time.timeScale = 1;
         lvl1Button.transform.LeanSetLocalPosX(1300);
         lvl2Button.transform.LeanSetLocalPosX(1300);
         lvl3Button.transform.LeanSetLocalPosX(1300);

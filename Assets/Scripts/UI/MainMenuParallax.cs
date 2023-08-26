@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Parallax : MonoBehaviour
+public class MainMenuParallax : MonoBehaviour
 {
     public new GameObject camera;
 

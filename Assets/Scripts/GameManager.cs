@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
 
     private PlayerController _playerController;
 
+    private PauseMenu _pauseMenu;
+
+    private LevelLoader _levelLoader;
+
 
     void Awake()
     {
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
         if(gms.Length > 1) Debug.LogError("Too Many Game Managers!");
 
         _playerController = FindObjectOfType<PlayerController>();
+        _levelLoader = FindObjectOfType<LevelLoader>();
+        _pauseMenu = GetComponent<PauseMenu>();
     }
 
     void OnEnable()
@@ -64,12 +70,17 @@ public class GameManager : MonoBehaviour
 
     void MenuAction(InputAction.CallbackContext context)
     {
-        //Toggle Pause Menu
+        _pauseMenu.TogglePauseMenu(this, _playerController);
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _levelLoader.LoadLevel(SceneManager.GetActiveScene().name);
+    }
+
+    public void BackToMainMenu()
+    {
+        _levelLoader.LoadLevel("MainMenu");
     }
 
     public void QuitGame()

@@ -136,8 +136,10 @@ public class PlayerController : MonoBehaviour
 
     public void EnableMovement() 
     {
-        _canMove = true;
-        _animator.SetBool("canMove", true);
+        if(_playerHP > 0){
+            _canMove = true;
+            _animator.SetBool("canMove", true);
+        }
     }
     public void DisableMovement() 
     {

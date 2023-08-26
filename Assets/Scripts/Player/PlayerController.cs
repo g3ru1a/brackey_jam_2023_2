@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerDeath(){
         _gameManager.GetSFXSource().PlayOneShot(deadAudioClip, deadClipVolume);
         _gameManager.GetTrackSource().Stop();
+        _gameManager.GameFailed();
     }
 
     public void PlayerFailed()

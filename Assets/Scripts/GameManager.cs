@@ -111,6 +111,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameFailed()
+    {
+        _pauseMenu.OpenGameFailedMenu();
+    }
+
     public void AddPoints(int points) { totalPoints += points; UpdatePointsUI(); }
     public void LoosePoints(bool allPoints = false) { 
         if(allPoints){

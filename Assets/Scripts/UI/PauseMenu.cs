@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     private PlayerController _pc;
     private bool _wasMoving = false;
     private bool _wasPlaying = false;
+    private bool _isGameOver = false;
 
     void Start()
     {
@@ -36,9 +37,27 @@ public class PauseMenu : MonoBehaviour
     public void TogglePauseMenu(GameManager gm, PlayerController pc)
     {
         
-        if(isMenuOpen) ClosePauseMenu();
-        else OpenPauseMenu(gm, pc);
+        if(!_isGameOver)
+        {
+            if(isMenuOpen) ClosePauseMenu();
+            else OpenPauseMenu(gm, pc);
+        }
     }
+
+    public void OpenGameFailedMenu()
+    {
+        _isGameOver = true;
+        background.interactable = true;
+        pauseMenu.SetActive(true);
+        background.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
+        logoImage.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.5f).setIgnoreTimeScale(true);
+        // resumeButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
+        restartButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
+        menuButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
+        exitButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
+        
+    }
+
     public void OpenPauseMenu(GameManager gm, PlayerController pc)
     {
         _gm = gm;

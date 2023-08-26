@@ -52,10 +52,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         background.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
         logoImage.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.5f).setIgnoreTimeScale(true);
-        resumeButton.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
-        restartButton.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
-        menuButton.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
-        exitButton.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
+        resumeButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
+        restartButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
+        menuButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
+        exitButton.transform.LeanScale(Vector2.one * 2.5f, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
         
     }
 

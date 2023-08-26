@@ -56,6 +56,8 @@ MonoBehaviour:
   pointsOnUI: {fileID: 0}
   totalPoints: 0
   pointLoosePS: {fileID: 5347012502322143460, guid: 5e7e58ebf6d462547b71b477da36fdd1, type: 3}
+  coinLossClip: {fileID: 0}
+  coinLossVolume: 1
 --- !u!114 &72996089338224984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
   menuButton: {fileID: 0}
   exitButton: {fileID: 0}
   logoImage: {fileID: 0}
+  isMenuOpen: 0
 --- !u!82 &8438065041244835228
 AudioSource:
   m_ObjectHideFlags: 0

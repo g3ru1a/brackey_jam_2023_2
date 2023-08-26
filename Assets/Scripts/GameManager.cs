@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject pointLoosePS;
 
+    public AudioClip coinLossClip;
+    [Range(0,1)]
+    public float coinLossVolume = 1f;
+
     
     private PlayerInputActions _inputActions;
     private InputAction _startAction;
@@ -111,6 +115,7 @@ public class GameManager : MonoBehaviour
     public void LoosePoints(bool allPoints = false) { 
         if(allPoints){
             if(totalPoints > 0 ){
+                sfxSource.PlayOneShot(coinLossClip, coinLossVolume);
                 GameObject coinPS = Instantiate(pointLoosePS, _playerController.gameObject.transform.position, Quaternion.identity);
                 ParticleSystem ps = coinPS.GetComponent<ParticleSystem>();
                 var main = ps.main;
@@ -120,13 +125,12 @@ public class GameManager : MonoBehaviour
             totalPoints = 0;
         }else if (totalPoints > 0){
             int pointLoss = UnityEngine.Random.Range(1, totalPoints / 2);
-            if(totalPoints > 0){
-                GameObject coinPS = Instantiate(pointLoosePS, _playerController.gameObject.transform.position, Quaternion.identity);
-                ParticleSystem ps = coinPS.GetComponent<ParticleSystem>();
-                var main = ps.main;
-                main.maxParticles = pointLoss;
-                ps.Play();
-            }
+            sfxSource.PlayOneShot(coinLossClip, coinLossVolume);
+            GameObject coinPS = Instantiate(pointLoosePS, _playerController.gameObject.transform.position, Quaternion.identity);
+            ParticleSystem ps = coinPS.GetComponent<ParticleSystem>();
+            var main = ps.main;
+            main.maxParticles = pointLoss;
+            ps.Play();
             totalPoints -= pointLoss;
         }
         UpdatePointsUI(); 

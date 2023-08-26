@@ -10,7 +10,7 @@ public class FinishPoint : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            fade.SetActive(true);
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 }

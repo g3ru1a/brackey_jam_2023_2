@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     private PlayerController _playerController;
 
     private PauseMenu _pauseMenu;
+    private LevelFinishedMenu _levelFinishedMenu;
 
     private LevelLoader _levelLoader;
 
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         _playerController = FindObjectOfType<PlayerController>();
         _levelLoader = FindObjectOfType<LevelLoader>();
         _pauseMenu = GetComponent<PauseMenu>();
+        _levelFinishedMenu = GetComponent<LevelFinishedMenu>();
     }
 
     void OnEnable()
@@ -110,6 +112,11 @@ public class GameManager : MonoBehaviour
             trackSource.clip = track;
             trackSource.Play();
         }
+    }
+
+    public void GameOver()
+    {
+        _levelFinishedMenu.OpenLevelFinishedMenu();
     }
 
     public void GameFailed()

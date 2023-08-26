@@ -16,24 +16,32 @@ public class LevelFinishedMenu : MonoBehaviour
 
     void Start()
     {
-        
+        levelFinishMenu.SetActive(false);
+        logoImage.transform.localScale = Vector2.zero;
+        background.alpha = 0;
+        background.interactable = false;
+        score.alpha = 0;
+
+        nextLevelButton.transform.LeanSetPosX(400);
+        restartButton.transform.LeanSetPosX(400);
+        menuButton.transform.LeanSetPosX(400);
+        exitButton.transform.LeanSetPosX(400); 
     }
 
 
-    public void OpenPauseMenu()
+    public void OpenLevelFinishedMenu()
     {
         background.interactable = true;
-        Time.timeScale = 0;
         levelFinishMenu.SetActive(true);
         background.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
         score.LeanAlpha(1, 0.6f).setEaseOutExpo().setIgnoreTimeScale(true);
         logoImage.transform.LeanScale(Vector2.one * 3, 0.2f).setEaseInOutQuart().setDelay(0.5f).setIgnoreTimeScale(true);
 
 
-        nextLevelButton.transform.LeanMoveLocalX(-50, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
-        restartButton.transform.LeanMoveLocalX(-50, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
-        menuButton.transform.LeanMoveLocalX(-50, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
-        exitButton.transform.LeanMoveLocalX(-50, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
+        nextLevelButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.55f).setIgnoreTimeScale(true);
+        restartButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.6f).setIgnoreTimeScale(true);
+        menuButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.65f).setIgnoreTimeScale(true);
+        exitButton.transform.LeanMoveX(-50, 0.2f).setEaseInOutQuart().setDelay(0.7f).setIgnoreTimeScale(true);
         
     }
 }

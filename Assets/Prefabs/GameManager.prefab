@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1145923180388157139}
   - component: {fileID: 6038077897318837084}
   - component: {fileID: 72996089338224984}
+  - component: {fileID: 7833092982290500244}
   - component: {fileID: 8438065041244835228}
   - component: {fileID: 3472478661929041120}
   - component: {fileID: 5468451633638151556}
@@ -54,6 +55,7 @@ MonoBehaviour:
   trackOffset: 0
   sfxSource: {fileID: 8438065041244835228}
   pointsOnUI: {fileID: 0}
+  pointsOnLevelFinishedUI: {fileID: 0}
   totalPoints: 0
   pointLoosePS: {fileID: 5347012502322143460, guid: 5e7e58ebf6d462547b71b477da36fdd1, type: 3}
   coinLossClip: {fileID: 0}
@@ -78,6 +80,26 @@ MonoBehaviour:
   exitButton: {fileID: 0}
   logoImage: {fileID: 0}
   isMenuOpen: 0
+--- !u!114 &7833092982290500244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065397286532740680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f364769ee11e40834696848f47f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelFinishMenu: {fileID: 0}
+  background: {fileID: 0}
+  score: {fileID: 0}
+  restartButton: {fileID: 0}
+  nextLevelButton: {fileID: 0}
+  menuButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  logoImage: {fileID: 0}
 --- !u!82 &8438065041244835228
 AudioSource:
   m_ObjectHideFlags: 0

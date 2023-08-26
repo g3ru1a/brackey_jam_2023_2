@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passedCheckPointClip: {fileID: 8300000, guid: e39f571af61eb92419c792ac78a37235, type: 3}
-  volume: 1
+  volume: 0.6
   HPBuff: 1
 --- !u!61 &1625179080119682808
 BoxCollider2D:

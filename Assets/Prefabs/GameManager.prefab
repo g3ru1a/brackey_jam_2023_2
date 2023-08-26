@@ -58,7 +58,7 @@ MonoBehaviour:
   pointsOnLevelFinishedUI: {fileID: 0}
   totalPoints: 0
   pointLoosePS: {fileID: 5347012502322143460, guid: 5e7e58ebf6d462547b71b477da36fdd1, type: 3}
-  coinLossClip: {fileID: 0}
+  coinLossClip: {fileID: 8300000, guid: 876d91e549a268e45b2605e13db4cfe9, type: 3}
   coinLossVolume: 1
 --- !u!114 &72996089338224984
 MonoBehaviour:

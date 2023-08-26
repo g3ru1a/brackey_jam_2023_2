@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePointsUI() { 
         pointsOnUI.text = totalPoints.ToString();
-        pointsOnLevelFinishedUI.text = totalPoints.ToString();
+       // pointsOnLevelFinishedUI.text = totalPoints.ToString();
     }
 
     public int GetTotalPoints() { return totalPoints; }

@@ -35,15 +35,16 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePauseMenu(GameManager gm, PlayerController pc)
     {
+        
+        if(isMenuOpen) ClosePauseMenu();
+        else OpenPauseMenu(gm, pc);
+    }
+    public void OpenPauseMenu(GameManager gm, PlayerController pc)
+    {
         _gm = gm;
         _pc = pc;
         _wasMoving = _pc.CanMove();
         _wasPlaying = gm.trackSource.isPlaying;
-        if(isMenuOpen) ClosePauseMenu();
-        else OpenPauseMenu();
-    }
-    public void OpenPauseMenu()
-    {
         isMenuOpen = true;
         background.interactable = true;
         _pc.DisableMovement();

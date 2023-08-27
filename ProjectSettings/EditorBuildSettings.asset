@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: b4103816577dbb246b9f61094fee580c
+  - enabled: 1
+    path: Assets/Scenes/ReachTimothyCutscene.unity
+    guid: 0a4dcc6529544fa4c8333a80676ddf54
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2cb1542b6764df247ace66bf7cd3f0b5, type: 2}

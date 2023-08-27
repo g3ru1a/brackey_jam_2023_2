@@ -116,7 +116,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _levelFinishedMenu.OpenLevelFinishedMenu();
+        if(SceneManager.GetActiveScene().name != "Level 2"){
+            _levelFinishedMenu.OpenLevelFinishedMenu();
+        }else{
+            _levelLoader.LoadLevel("ReachTimothyCutscene");
+        }
     }
 
     public void GameFailed()

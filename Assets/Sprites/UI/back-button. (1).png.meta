@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c45636f10e5346c4893784a97270bb43
+guid: 28908dddd11a63a4390cb99f93239fba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -110,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: back-button._0
+      name: back-button. (1)_0
       rect:
         serializedVersion: 2
         x: 32
@@ -124,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d9e3318e13e1cb4384a14788432c902
-      internalID: 116971848
+      spriteID: ca667ce504ead4f4a88fc46db800e7cc
+      internalID: -1530619899
       vertices: []
       indices: 
       edges: []
@@ -141,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      back-button._0: 116971848
+      back-button. (1)_0: -1530619899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

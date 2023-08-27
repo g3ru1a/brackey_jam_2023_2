@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float deadClipVolume = 1f;
 
     [SerializeField] private bool _canMove;
+    private bool _canJump = true;
 
     public float backToCheckpointTransitionDurationSeconds = 2f;
 
@@ -148,6 +149,10 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("canMove", false);    
     }
     public bool CanMove() { return _canMove;}
+
+
+    public void SetCanJump(bool value) { _canJump = value; }
+    public bool CanJump() { return _canJump; }
 
     public float GetJumpAudioDelay() {return _jumpAudioDelay;}
 

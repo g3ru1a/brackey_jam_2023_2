@@ -64,7 +64,8 @@ public class PlayerMovement : MonoBehaviour
             _jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (IsOnGround() && _jumpBufferCounter > 0f && !_playerController.IsJumping() && _playerController.CanMove())
+        if (IsOnGround() && _jumpBufferCounter > 0f && !_playerController.IsJumping() &&
+            _playerController.CanMove() && _playerController.CanJump())
         {
             StartCoroutine(JumpCoroutine());
         }

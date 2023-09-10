@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private LevelLoader _levelLoader;
 
+    public int targetFramerate = 60;
 
     void Awake()
     {
@@ -98,6 +99,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = targetFramerate;
         _playerController.DisableMovement();
     }
 

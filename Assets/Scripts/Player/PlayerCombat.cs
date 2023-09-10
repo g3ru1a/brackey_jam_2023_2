@@ -19,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
     private PlayerInputActions _inputActions;
     private InputAction _attackAction;
     private PlayerController _playerController;
+    private bool _isAttacking = false;
     
     void Awake()
     {
@@ -30,7 +31,7 @@ public class PlayerCombat : MonoBehaviour
     void OnEnable()
     {
         _attackAction = _inputActions.Player.Attack;
-        _attackAction.performed += Attack;
+        _attackAction.started += Attack;
         _attackAction.Enable();
     }
 
@@ -41,11 +42,13 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        int attackFrames = 4;
+        if(_isAttacking) yield break;
+        int attackFrames = (FPSCounter.Instance.avgFramerate * 4) / 12;
+        _isAttacking = true;
         while(attackFrames > 0){
 
             Collider2D[] hitObjects = Physics2D.OverlapBoxAll(_attackPosition, Vector2.one*radius, 0, hittableLayer);
-            Debug.Log(hitObjects.Length);
+            // Debug.Log(hitObjects.Length);
             if(hitObjects.Length > 0){
                 foreach(Collider2D hitObject in hitObjects)
                 {
@@ -53,8 +56,11 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
             attackFrames--;
+            // Debug.Log("attacking: "+ attackFrames);
+            // Debug.Break();
             yield return new WaitForFixedUpdate();
         }
+        _isAttacking = false;
     }
 
     void Attack(InputAction.CallbackContext context)

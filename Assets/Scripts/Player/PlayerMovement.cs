@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnEnable(){
         _jumpInputAction = _playerControls.Player.Jump;
-        _jumpInputAction.performed += Jump;
+        _jumpInputAction.started += Jump;
         _jumpInputAction.Enable();
     }
 
